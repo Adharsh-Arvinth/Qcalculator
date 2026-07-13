@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A beautiful, full-featured scientific calculator with trigonometric, logarithmic, and advanced mathematical functions." />
+  <title>Scientific Calculator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <main class="calculator-container" id="calculatorContainer">
+    <!-- Display -->
+    <section class="display-section" id="displaySection">
+      <div class="display-top-bar">
+        <span class="mode-badge" id="modeBadge">DEG</span>
+        <span class="memory-badge" id="memoryBadge" style="display:none;">M</span>
+        <button class="history-toggle" id="historyToggle" title="History">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="9"/><path d="M3 12a9 9 0 0 1 9-9"/></svg>
+        </button>
+      </div>
+      <div class="expression-display" id="expressionDisplay"></div>
+      <div class="result-display" id="resultDisplay">0</div>
+    </section>
+
+    <!-- History Panel -->
+    <aside class="history-panel" id="historyPanel">
+      <div class="history-header">
+        <h2>History</h2>
+        <button class="clear-history-btn" id="clearHistoryBtn" title="Clear History">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2m3 0v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6"/></svg>
+        </button>
+      </div>
+      <ul class="history-list" id="historyList">
+        <li class="history-empty">No history yet</li>
+      </ul>
+    </aside>
+
+    <!-- Buttons -->
+    <section class="buttons-section" id="buttonsSection">
+      <!-- Top function row -->
+      <div class="btn-row fn-row">
+        <button class="btn btn-fn" id="btnShift" data-action="shift">2nd</button>
+        <button class="btn btn-fn" id="btnDeg" data-action="deg">DEG</button>
+        <button class="btn btn-fn" id="btnPi" data-action="pi">π</button>
+        <button class="btn btn-fn" id="btnE" data-action="euler">e</button>
+        <button class="btn btn-fn" id="btnAns" data-action="ans">ANS</button>
+      </div>
+
+      <!-- Scientific row 1 -->
+      <div class="btn-row sci-row">
+        <button class="btn btn-sci" id="btnSin" data-action="sin">sin</button>
+        <button class="btn btn-sci" id="btnCos" data-action="cos">cos</button>
+        <button class="btn btn-sci" id="btnTan" data-action="tan">tan</button>
+        <button class="btn btn-sci" id="btnLog" data-action="log">log</button>
+        <button class="btn btn-sci" id="btnLn" data-action="ln">ln</button>
+      </div>
+
+      <!-- Scientific row 2 -->
+      <div class="btn-row sci-row">
+        <button class="btn btn-sci" id="btnSqrt" data-action="sqrt">√</button>
+        <button class="btn btn-sci" id="btnCbrt" data-action="cbrt">∛</button>
+        <button class="btn btn-sci" id="btnSquare" data-action="square">x²</button>
+        <button class="btn btn-sci" id="btnCube" data-action="cube">x³</button>
+        <button class="btn btn-sci" id="btnPow" data-action="pow">xʸ</button>
+      </div>
+
+      <!-- Scientific row 3 -->
+      <div class="btn-row sci-row">
+        <button class="btn btn-sci" id="btnFact" data-action="factorial">x!</button>
+        <button class="btn btn-sci" id="btnInv" data-action="inverse">1/x</button>
+        <button class="btn btn-sci" id="btnAbs" data-action="abs">|x|</button>
+        <button class="btn btn-sci" id="btnExp" data-action="exp">eˣ</button>
+        <button class="btn btn-sci" id="btnTenPow" data-action="tenPow">10ˣ</button>
+      </div>
+
+      <!-- Main grid -->
+      <div class="btn-grid main-grid">
+        <button class="btn btn-util" id="btnClear" data-action="clear">AC</button>
+        <button class="btn btn-util" id="btnParenOpen" data-action="parenOpen">(</button>
+        <button class="btn btn-util" id="btnParenClose" data-action="parenClose">)</button>
+        <button class="btn btn-op" id="btnDivide" data-action="divide">÷</button>
+
+        <button class="btn btn-num" id="btn7" data-action="num" data-value="7">7</button>
+        <button class="btn btn-num" id="btn8" data-action="num" data-value="8">8</button>
+        <button class="btn btn-num" id="btn9" data-action="num" data-value="9">9</button>
+        <button class="btn btn-op" id="btnMultiply" data-action="multiply">×</button>
+
+        <button class="btn btn-num" id="btn4" data-action="num" data-value="4">4</button>
+        <button class="btn btn-num" id="btn5" data-action="num" data-value="5">5</button>
+        <button class="btn btn-num" id="btn6" data-action="num" data-value="6">6</button>
+        <button class="btn btn-op" id="btnSubtract" data-action="subtract">−</button>
+
+        <button class="btn btn-num" id="btn1" data-action="num" data-value="1">1</button>
+        <button class="btn btn-num" id="btn2" data-action="num" data-value="2">2</button>
+        <button class="btn btn-num" id="btn3" data-action="num" data-value="3">3</button>
+        <button class="btn btn-op" id="btnAdd" data-action="add">+</button>
+
+        <button class="btn btn-num" id="btnPlusMinus" data-action="plusMinus">±</button>
+        <button class="btn btn-num" id="btn0" data-action="num" data-value="0">0</button>
+        <button class="btn btn-num" id="btnDot" data-action="dot">.</button>
+        <button class="btn btn-equals" id="btnEquals" data-action="equals">=</button>
+
+        <button class="btn btn-util btn-small" id="btnBackspace" data-action="backspace">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 4H8l-7 8 7 8h13a2 2 0 002-2V6a2 2 0 00-2-2z"/><line x1="18" y1="9" x2="12" y2="15"/><line x1="12" y1="9" x2="18" y2="15"/></svg>
+        </button>
+        <button class="btn btn-util btn-small" id="btnMC" data-action="mc">MC</button>
+        <button class="btn btn-util btn-small" id="btnMR" data-action="mr">MR</button>
+        <button class="btn btn-util btn-small" id="btnMS" data-action="ms">M+</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
