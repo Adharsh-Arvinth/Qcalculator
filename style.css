@@ -801,6 +801,17 @@ body {
 }
 
 /* Bit grid */
+.prog-bit-grid-scroll {
+  max-height: 140px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.08) transparent;
+}
+
+.prog-bit-grid-scroll::-webkit-scrollbar { width: 4px; }
+.prog-bit-grid-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 2px; }
+
 .prog-bit-grid {
   display: flex;
   flex-wrap: wrap;
@@ -808,6 +819,26 @@ body {
   padding: 4px 14px 8px;
   justify-content: center;
   align-items: center;
+}
+
+.prog-bit-row-label {
+  width: 100%;
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  color: var(--text-muted);
+  padding: 4px 0 2px;
+  text-align: left;
+  letter-spacing: 0.03em;
+}
+
+.prog-bit-row-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 4px;
 }
 
 .prog-bit {
@@ -826,6 +857,13 @@ body {
   transition: all var(--transition-fast);
 }
 
+.prog-bit-compact {
+  width: 14px;
+  height: 14px;
+  font-size: 0.45rem;
+  border-radius: 2px;
+}
+
 .prog-bit:hover { background: rgba(255,255,255,0.08); }
 
 .prog-bit.bit-on {
@@ -835,13 +873,21 @@ body {
 }
 
 .prog-bit-sep {
-  width: 8px;
+  width: 6px;
   flex-shrink: 0;
 }
 
 .prog-bit-space {
-  width: 4px;
+  width: 3px;
   flex-shrink: 0;
+}
+
+.prog-word-info {
+  font-family: var(--font-mono);
+  font-size: 0.63rem;
+  color: var(--text-muted);
+  text-align: right;
+  padding: 0 4px 6px;
 }
 
 /* Prog controls */
@@ -856,14 +902,15 @@ body {
 .prog-word-btns {
   display: flex;
   gap: 4px;
+  flex-wrap: wrap;
 }
 
 .prog-base-btn,
 .prog-word-btn {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   font-weight: 600;
-  padding: 5px 10px;
+  padding: 5px 8px;
   border-radius: 6px;
   border: 1px solid rgba(255,255,255,0.08);
   background: rgba(255,255,255,0.04);
