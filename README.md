@@ -1,4 +1,4 @@
-# ⚛️ Quantum Scientific Calculator
+#  Quantum Scientific Calculator
 
 > The world's first browser-based calculator combining **256-bit programming**, **quantum computing simulation**, and **13 unit converters** — all in pure vanilla JavaScript. Zero dependencies.
 
@@ -6,21 +6,6 @@
 
 ---
 
-## 🌟 What Makes This Novel
-
-| Feature | This Calculator | Windows Calculator | Google Calculator |
-|---|:---:|:---:|:---:|
-| Scientific Mode | ✅ | ✅ | ✅ |
-| Graphing Mode | ✅ | ✅ | ❌ |
-| Programmer Mode | ✅ **256-bit** | 64-bit max | ❌ |
-| Quantum Computing | ✅ Bloch Sphere + Circuit Sim | ❌ | ❌ |
-| 13 Unit Converters | ✅ Live Currency API | ✅ | ❌ |
-| Date Calculator | ✅ | ✅ | ❌ |
-| Zero Dependencies | ✅ Pure JS/HTML/CSS | N/A | N/A |
-
-**No mainstream calculator supports 256-bit operations or quantum computing simulation.**
-
----
 
 ## 🎯 Features
 
