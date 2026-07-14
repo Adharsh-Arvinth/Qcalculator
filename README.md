@@ -1,6 +1,7 @@
 # Quantum Scientific Calculator
 
 A powerful, multi-mode scientific calculator web application featuring scientific, graphing, programmer, date, and quantum computing modes, along with 13 unit converters. Built with vanilla JavaScript, HTML5, and modern CSS.
+https://adharsh-arvinth.github.io/calci/#scientific
 
 ## 🎯 Features
 
