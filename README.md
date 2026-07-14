@@ -1,380 +1,221 @@
-# Quantum Scientific Calculator
+# ⚛️ Quantum Scientific Calculator
 
-A powerful, multi-mode scientific calculator web application featuring scientific, graphing, programmer, date, and quantum computing modes, along with 13 unit converters. Built with vanilla JavaScript, HTML5, and modern CSS.
-https://adharsh-arvinth.github.io/calci/#scientific
+> The world's first browser-based calculator combining **256-bit programming**, **quantum computing simulation**, and **13 unit converters** — all in pure vanilla JavaScript. Zero dependencies.
+
+🔗 **[Live Demo →](https://adharsh-arvinth.github.io/Qcalculator/#scientific)**
+
+---
+
+## 🌟 What Makes This Novel
+
+| Feature | This Calculator | Windows Calculator | Google Calculator |
+|---|:---:|:---:|:---:|
+| Scientific Mode | ✅ | ✅ | ✅ |
+| Graphing Mode | ✅ | ✅ | ❌ |
+| Programmer Mode | ✅ **256-bit** | 64-bit max | ❌ |
+| Quantum Computing | ✅ Bloch Sphere + Circuit Sim | ❌ | ❌ |
+| 13 Unit Converters | ✅ Live Currency API | ✅ | ❌ |
+| Date Calculator | ✅ | ✅ | ❌ |
+| Zero Dependencies | ✅ Pure JS/HTML/CSS | N/A | N/A |
+
+**No mainstream calculator supports 256-bit operations or quantum computing simulation.**
+
+---
 
 ## 🎯 Features
 
 ### Calculator Modes
-1. **Scientific Calculator** - Advanced mathematical operations with trigonometry, logarithms, factorial, and more
-2. **Graphing Calculator** - Plot and visualize mathematical functions with zoom and pan controls
-3. **Programmer Calculator** - Binary, Octal, Decimal, and Hexadecimal conversions with bitwise operations
-4. **Date Calculator** - Calculate date differences and perform date arithmetic
-5. **Quantum Computing** - Quantum qubit operations and computations
-6. **Unit Converters** (13 types)
-   - Currency, Volume, Length, Weight & Mass
-   - Temperature, Energy, Area, Speed, Time
-   - Power, Data, Pressure, Angle
+
+#### 1. 🔬 Scientific Calculator
+- Trigonometry: sin, cos, tan + inverses + hyperbolic (sinh, cosh, tanh)
+- Logarithms: log₁₀, ln, log₂
+- Powers & Roots: x², x³, xʸ, √, ∛, ʸ√x
+- Advanced: factorial (x!), |x|, eˣ, 10ˣ, 2ˣ, percentage
+- Constants: π, e, ANS (last answer)
+- Memory: M+, MR, MC
+- DEG/RAD toggle, 2nd function mode
+- Live preview as you type
+- Calculation history with back button
+
+#### 2. 📈 Graphing Calculator
+- Plot up to **4 simultaneous functions** with color coding
+- Pan (drag) and zoom (scroll wheel / pinch)
+- Trace mode — hover to see (x, y) coordinates
+- Auto-scaling grid with labeled axes
+- Supports: polynomials, trig, log, sqrt, abs, exp, floor, ceil
+- Implicit multiplication: `2x`, `2sin(x)`, `2(x+1)`
+- Singularity detection (handles tan(x) discontinuities)
+
+#### 3. 💻 Programmer Calculator — *Up to 256-bit*
+- **Word sizes**: BYTE (8), WORD (16), DWORD (32), QWORD (64), **128-bit**, **256-bit**
+- Powered by **JavaScript BigInt** for arbitrary precision
+- Simultaneous display in BIN / OCT / DEC / HEX
+- Interactive **bit toggle grid** — click individual bits to flip
+- Bitwise operations: NOT, Left Shift (≪), Right Shift (≫)
+- Live "bits used" indicator
+- Click any base row to switch input mode
+
+#### 4. 📅 Date Calculator
+- **Difference tab**: Select two dates → years, months, days, total days, weeks
+- **Add/Subtract tab**: Start date ± years/months/days → result date
+- Shows day-of-week for all dates
+
+#### 5. ⚛️ Quantum Computing Calculator — *Novel*
+Four sub-tabs:
+
+| Tab | What It Does |
+|---|---|
+| **Qubit State** | Interactive Bloch sphere (Canvas 3D), θ/φ sliders, state vector α\|0⟩ + β\|1⟩, probability bars |
+| **Gate Calculator** | Apply I, X, Y, Z, H, S, T, Rx(θ), Ry(θ), Rz(θ) gates, see matrix + output state, gate chaining |
+| **Circuit Simulator** | 2–3 qubit wires, click to place gates (H, X, Y, Z, CNOT, SWAP), run simulation, probability bars |
+| **Entanglement Lab** | Bell states (\|Φ+⟩, \|Φ-⟩, \|Ψ+⟩, \|Ψ-⟩), measurement collapse, Von Neumann entropy |
+
+#### 6. 🔄 Unit Converters (13 types)
+
+| Converter | Units | Notes |
+|---|---|---|
+| **Currency** | 25 currencies (USD, EUR, GBP, INR, JPY...) | **Live API rates** with offline fallback |
+| **Volume** | mL, L, fl oz, cup, pint, quart, gallon, m³, cm³ | US + Imperial |
+| **Length** | nm, µm, mm, cm, m, km, in, ft, yd, mi, nmi | |
+| **Weight & Mass** | mg, g, kg, tonne, oz, lb, stone, short/long ton | |
+| **Temperature** | °C, °F, K | Formula-based conversion |
+| **Energy** | J, kJ, cal, kcal, Wh, kWh, eV, BTU, ft·lbf | |
+| **Area** | mm²–km², in²–mi², acre, hectare | |
+| **Speed** | m/s, km/h, mph, knots, ft/s, Mach | |
+| **Time** | ns, µs, ms, s, min, hr, day, week, month, year | |
+| **Power** | W, kW, MW, hp, BTU/h, ft·lbf/s | |
+| **Data** | bit, byte, KB–PB, KiB–TiB | SI + binary prefixes |
+| **Pressure** | Pa, kPa, MPa, bar, atm, psi, mmHg, torr | |
+| **Angle** | °, rad, grad, arcmin, arcsec, turn | |
+
+---
 
 ## 📂 Project Structure
 
 ```
-calci/
-├── index.html           # Main HTML structure
-├── style.css            # Global styling & themes
+Qcalculator/
+├── index.html           # App shell — sidebar navigation + mode container
+├── style.css            # Global dark glassmorphism theme (1100+ lines)
 ├── js/
-│   ├── app.js           # Core app controller & mode switching
-│   ├── scientific.js    # Scientific calculator module
-│   ├── graphing.js      # Graphing calculator module
-│   ├── programmer.js    # Programmer calculator module
-│   ├── date.js          # Date calculator module
-│   ├── converter.js     # Unit converter module
-│   └── quantum.js       # Quantum computing module
-└── README.md            # This file
+│   ├── app.js           # Navigation controller, mode lifecycle, shared utils
+│   ├── scientific.js    # Scientific calculator with history
+│   ├── graphing.js      # Canvas-based function plotter
+│   ├── programmer.js    # 256-bit BigInt programmer calculator
+│   ├── date.js          # Date difference & arithmetic
+│   ├── converter.js     # Factory-generated 13 unit converters
+│   └── quantum.js       # Quantum computing — Complex math, gates, circuits
+└── README.md
 ```
 
-## 🔧 Core Modules & Functions
-
-### app.js - Application Controller
-**Purpose:** Manages navigation, mode switching, and module lifecycle
-
-**Key Functions:**
-- `openSidebar()` - Opens the navigation sidebar
-- `closeSidebar()` - Closes the navigation sidebar
-- `switchMode(modeName)` - Switches between calculator modes
-- `window.CalcUtils.formatNumber(num)` - Formats numbers for display
-- `window.CalcUtils.escapeHTML(str)` - HTML entity escaping
-- `window.CalcUtils.createRipple(btn, e)` - Creates ripple effect on button click
-
-**Global Variables:**
-- `currentMode` - Currently active calculator module
-- `currentModuleName` - Name of current mode
-- `window.CalcModules` - Registry of all available calculator modules
-- `window.CalcUtils` - Shared utility functions
+**Total**: ~180KB, 9 files, **zero dependencies**.
 
 ---
 
-### scientific.js - Scientific Calculator Module
-**Purpose:** Provides advanced mathematical calculations with trigonometry, logarithms, and more
+## 🔧 Technical Details
 
-**Key Functions:**
-- `toRad(deg)` - Converts degrees to radians
-- `toDeg(rad)` - Converts radians to degrees
-- `factorial(n)` - Calculates factorial of n
-- `gammaApprox(z)` - Approximates gamma function
-- `safeEval(expr)` - Safely evaluates mathematical expressions
-- `safeEvalSimple(expr)` - Basic expression evaluator
-- `updateDisplay()` - Updates calculator display
-- `appendToExpression(raw, display)` - Appends to current expression
-- `handleNumber(v)` - Handles number input
-- `handleOperator(raw, display)` - Handles mathematical operators
-- `handleFunction(fnRaw, fnDisplay)` - Handles function calls (sin, cos, log, etc.)
-- `handleEquals()` - Evaluates the expression
-- `handleClear()` - Clears all input
-- `handleBackspace()` - Removes last character
-- `livePreview()` - Shows live calculation preview
-- `addHistory(expr, result)` - Adds calculation to history
-- `renderHistory()` - Renders history panel
-- `toggleShift()` - Toggles shift mode for alternate functions
+### Module Architecture
 
-**State Variables:**
+Every calculator mode registers with the same interface:
+
 ```javascript
-state = {
-  expression: '',           // Internal expression
-  displayExpr: '',          // Display-friendly expression
-  result: '0',              // Current result
-  lastAnswer: 0,            // Last calculated result
-  isShift: false,           // Shift mode toggle
-  isDeg: true,              // Degree/Radian mode
-  memory: 0,                // Memory value
-  hasMemory: false,         // Memory status
-  history: [],              // Calculation history
-  justEvaluated: false      // Post-evaluation flag
-}
+window.CalcModules['mode-name'] = {
+  name: 'Display Name',
+  render: function(container) { /* inject HTML */ },
+  init: function() { /* set up event listeners */ },
+  destroy: function() { /* clean up listeners, timers */ }
+};
 ```
 
-**Supported Operations:**
-- Basic: +, −, ×, ÷
-- Trigonometry: sin, cos, tan, sin⁻¹, cos⁻¹, tan⁻¹, sinh, cosh, tanh
-- Logarithms: log (base 10), ln (natural), log₂
-- Powers: xʸ, x², x³, √, ∛, ʸ√x
-- Advanced: factorial, |x|, eˣ, 10ˣ, 2ˣ, %
+The `app.js` controller handles mode switching: `destroy()` old → `render()` new → `init()` new.
+
+### Key Implementation Details
+
+| Module | Implementation |
+|---|---|
+| **Scientific** | Custom safe expression parser (no `eval()`), Lanczos gamma approximation for non-integer factorials |
+| **Graphing** | HTML5 Canvas with `requestAnimationFrame`, retina/HiDPI support, adaptive grid spacing |
+| **Programmer** | `BigInt` for 128/256-bit support, proper signed↔unsigned conversion, interactive bit grid |
+| **Converters** | Factory pattern — one function generates all 13 modules from data tables |
+| **Currency** | Fetches from `api.exchangerate-api.com/v4/latest/USD` (free, no API key), caches rates, static fallback |
+| **Temperature** | Formula-based (C↔F↔K), not factor multiplication |
+| **Quantum** | Custom `Complex` number class, matrix-vector multiplication, Kronecker products, Bloch sphere via Canvas 3D projection |
 
 ---
 
-### programmer.js - Programmer Calculator Module
-**Purpose:** Binary, Octal, Decimal, Hexadecimal conversions with bitwise operations
+## ⌨️ Keyboard Shortcuts
 
-**Key Functions:**
-- `clampToWord(val)` - Clamps value to word size limits
-- `toUnsigned(val)` - Converts to unsigned representation
-- `formatBin(val)` - Formats as binary with spacing
-- `formatOct(val)` - Formats as octal
-- `formatDec(val)` - Formats as decimal
-- `formatHex(val)` - Formats as hexadecimal
-- `parseInput(str, base)` - Parses input in given base
-- `updateAllDisplays()` - Updates all base displays
-- `updateBitToggles()` - Updates bit toggle visualization
-- `toggleBit(idx)` - Toggles individual bit
-- `updateButtonStates()` - Enables/disables buttons based on base
-- `handleProgAction(action, value)` - Handles programmer calculator actions
-- `renderBitGrid()` - Renders bit toggle grid
+### Scientific Mode
+| Key | Action |
+|---|---|
+| `0`–`9` | Number input |
+| `+` `-` `*` `/` | Operators |
+| `(` `)` | Parentheses |
+| `Enter` or `=` | Evaluate |
+| `Backspace` | Delete last |
+| `Delete` | Clear all |
+| `!` | Factorial |
+| `^` | Power |
+| `Escape` | Close history |
 
-**Key Variables:**
-```javascript
-currentBase = 'DEC';      // Current number base (BIN, OCT, DEC, HEX)
-currentValue = 0;         // Current value
-wordSize = 32;            // Word size (8, 16, 32, 64)
-expression = '';          // Current input expression
-```
+### Programmer Mode
+| Key | Action |
+|---|---|
+| `0`–`9`, `A`–`F` | Digit input (base-dependent) |
+| `Backspace` | Delete last |
+| `Delete` | Clear |
 
-**Supported Operations:**
-- Base Conversions: Binary, Octal, Decimal, Hexadecimal
-- Bitwise: AND, OR, XOR, NOT, Left Shift (≪), Right Shift (≫)
-- Word Sizes: BYTE (8), WORD (16), DWORD (32), QWORD (64)
-- Bit Toggling: Click individual bits to toggle
-
----
-
-### graphing.js - Graphing Calculator Module
-**Purpose:** Plot and visualize mathematical functions with interactive zoom and pan
-
-**Key Functions:**
-- `compileExpression(expr)` - Parses mathematical expressions
-- `toCanvasX(x)` - Converts math coordinates to canvas X
-- `toCanvasY(y)` - Converts math coordinates to canvas Y
-- `toMathX(cx)` - Converts canvas X to math coordinates
-- `toMathY(cy)` - Converts canvas Y to math coordinates
-- `drawGraph()` - Draws the function curves and grid
-- `niceStep(range, targetSteps)` - Calculates nice grid spacing
-- `zoomIn()` - Zooms in at center
-- `zoomOut()` - Zooms out from center
-- `zoomAtPoint(factor, px, py)` - Zooms at specific point
-- `resetView()` - Resets to default view (-10 to 10)
-- `toggleGrid()` - Toggles grid display
-- `resizeCanvas()` - Resizes canvas to fit container
-- `getCanvasPos(e)` - Gets mouse position relative to canvas
-
-**Key Variables:**
-```javascript
-xMin, xMax, yMin, yMax   // View bounds
-xRange, yRange            // Current range
-W, H                      // Canvas width & height
-functions[]               // Array of function objects
-state.showGrid            // Grid visibility
-state.isDragging          // Pan state
-```
-
-**Features:**
-- Input up to 4 simultaneous functions
-- Interactive zoom and pan
-- Grid toggle
-- Axis display with labels
-- Trace mode showing coordinates
-- Function coloring (Indigo, Red, Green, Yellow)
-
----
-
-### date.js - Date Calculator Module
-**Purpose:** Calculate date differences and perform date arithmetic
-
-**Key Functions:**
-- `getDayName(date)` - Returns day name (Monday, Tuesday, etc.)
-- `getMonthName(m)` - Returns month name
-- `formatDate(d)` - Formats date as readable string
-- `dateDifference(d1, d2)` - Calculates difference between two dates
-- `addToDate(baseDate, years, months, days, subtract)` - Adds/subtracts from date
-- `todayISO()` - Returns today's date in ISO format
-- `calcDifference()` - Calculates and displays date difference
-- `calcArith()` - Calculates date arithmetic
-- `switchTab(tab)` - Switches between difference/arithmetic tabs
-
-**Supported Operations:**
-- Date Difference: Years, Months, Days, Weeks, Total Days
-- Date Arithmetic: Add/Subtract Years, Months, Days
-
----
-
-### converter.js - Unit Converter Module
-**Purpose:** Convert between 13 different unit types
-
-**Supported Converters:**
-1. **Currency** - Live or fixed exchange rates (25 currencies)
-2. **Volume** - mL, L, fl oz, cup, pint, gallon, m³
-3. **Length** - mm, cm, m, km, in, ft, yd, mi, nmi
-4. **Weight & Mass** - mg, g, kg, oz, lb, stone, ton
-5. **Temperature** - Celsius, Fahrenheit, Kelvin
-6. **Energy** - Joule, Calorie, Watt-hour, BTU, erg, eV
-7. **Area** - mm², cm², m², km², in², ft², yd², acre, hectare
-8. **Speed** - m/s, km/h, mph, knot, Mach
-9. **Time** - ms, s, min, hr, day, week, month, year
-10. **Power** - Watt, Kilowatt, Megawatt, Horsepower, BTU/hr
-11. **Data** - Byte, KB, MB, GB, TB, bit, Kibibyte, Mebibyte, Gibibyte, Tebibyte
-12. **Pressure** - Pa, kPa, atm, bar, psi, mmHg, Torr
-13. **Angle** - Degree, Radian, Gradian, Arcminute, Arcsecond, Turn
-
-**Key Functions:**
-- `createConverterModule(key, displayName, units, isTemp, isCurrency)` - Factory function for converters
-- `convert(value, fromIdx, toIdx)` - Performs unit conversion
-- `convertByFactor(val, fromFactor, toFactor)` - Factor-based conversion
-- `convertTemperature(val, fromName, toName)` - Temperature conversion
-- `formatResult(num)` - Formats conversion result
-- `fetchCurrencyRates(els)` - Fetches live currency rates
-
----
-
-### quantum.js - Quantum Computing Module
-**Purpose:** Quantum qubit operations and computations
-
-**Key Classes/Functions:**
-- `Complex(re, im)` - Complex number implementation
-  - `.add(c)` - Addition
-  - `.sub(c)` - Subtraction
-  - `.mul(c)` - Multiplication
-  - `.scale(s)` - Scalar multiplication
-  - `.conjugate()` - Complex conjugate
-  - `.magnitude()` - Magnitude/modulus
-  - `.magnitudeSq()` - Magnitude squared
-  - `.phase()` - Phase angle
-  - `.toString()` - String representation
-  
-- Quantum Gates:
-  - Pauli gates: I, X, Y, Z
-  - Hadamard: H
-  - Phase gates: S, T
-  - Rotation gates: Rx, Ry, Rz
-  - Multi-qubit: CNOT, SWAP
-  
-- Quantum Operations:
-  - `applyGate(state, gate)` - Applies gate to state
-  - `tensorProduct(a, b)` - Tensor product of states
-  - `kroneckerMatrix(A, B)` - Kronecker product of matrices
-  - `measureQubit(state, qubit, nQubits)` - Simulates measurement
-  - `applyCNOT(state, control, target, nQubits)` - Applies CNOT gate
-  - `applySWAP(state, q1, q2, nQubits)` - Applies SWAP gate
-  - `vonNeumannEntropy(state4)` - Calculates entanglement entropy
-  
-- Visualization:
-  - `drawBlochSphere()` - Renders 3D Bloch sphere
-  - `drawCircuit()` - Draws quantum circuit diagram
-
-**Key Variables:**
-```javascript
-theta, phi                // Bloch sphere angles
-amplitude_0               // |0⟩ component (alpha)
-amplitude_1               // |1⟩ component (beta)
-gateChain[]               // Chain of applied gates
-circuitQubits             // Number of qubits (2 or 3)
-circuitGates[]            // Gates in circuit
-entState[]                // Entangled state vector
-```
-
-**Quantum Tabs:**
-1. **Qubit State** - Bloch sphere visualization
-2. **Gate Calculator** - Apply gates step-by-step
-3. **Circuit Simulator** - Build and run circuits
-4. **Entanglement Lab** - Bell states and measurement
-
----
-
-## 🎨 CSS Variables & Theming
-
-Located in `style.css`:
-
-**Color Scheme:**
-```css
---bg-primary: #0a0a1a              /* Main background */
---bg-secondary: #111128            /* Secondary background */
---accent-primary: #818cf8          /* Primary accent (Indigo) */
---accent-secondary: #a78bfa        /* Secondary accent (Purple) */
---text-primary: #f1f5f9            /* Primary text */
---text-secondary: rgba(203, 213, 225, 0.7)  /* Secondary text */
---text-muted: rgba(148, 163, 184, 0.5)      /* Muted text */
-```
-
-**Button Classes:**
-- `.btn-num` - Number buttons
-- `.btn-op` - Operator buttons
-- `.btn-equals` - Equals button
-- `.btn-fn` - Function buttons
-- `.btn-sci` - Scientific buttons
-- `.btn-util` - Utility buttons
-
-**Radius & Spacing:**
-- `--radius-lg: 24px` - Large border radius
-- `--radius-md: 16px` - Medium border radius
-- `--radius-sm: 12px` - Small border radius
-- `--radius-xs: 8px` - Extra small border radius
+### General
+| Key | Action |
+|---|---|
+| `Escape` | Close sidebar |
 
 ---
 
 ## 🚀 Getting Started
 
-1. Clone or download the repository
-2. Open `index.html` in a modern web browser
-3. Use the sidebar to navigate between different calculator modes
-4. Press `Escape` to close the sidebar
+```bash
+# Clone the repository
+git clone https://github.com/Adharsh-Arvinth/Qcalculator.git
 
-## ⌨️ Keyboard Shortcuts
+# Open in browser — no build step needed
+open Qcalculator/index.html
+```
 
-**Scientific Calculator:**
-- Numbers: 0-9
-- Operators: `+`, `-`, `*`, `/`
-- Parentheses: `(`, `)`
-- Equals: `Enter` or `=`
-- Clear: `Delete`
-- Backspace: `Backspace`
-- Factorial: `!`
-- Power: `^`
-
-**Programmer Calculator:**
-- Hex digits: 0-F
-- Backspace: `Backspace`
-- Clear: `Delete`
-
-**Graphing Calculator:**
-- Scroll: Zoom in/out
-- Drag: Pan the view
-- Hover: Trace coordinates
-
----
-
-## 🔐 Security Features
-
-- Expression sanitization in scientific calculator
-- HTML escaping for user input
-- Safe evaluation of mathematical expressions
-- No use of `eval()` - custom safe parser used
-- Input validation for all conversions
+Or just visit the **[Live Demo](https://adharsh-arvinth.github.io/Qcalculator/)**.
 
 ---
 
 ## 🌐 Browser Support
 
-- Chrome/Chromium (recommended)
-- Firefox
-- Safari
-- Edge
-- Any modern browser supporting:
-  - ES5+ JavaScript
-  - CSS Backdrop filters & Transforms
-  - Canvas API
-  - WebGL (optional, for enhanced graphics)
+- ✅ Chrome / Edge (recommended)
+- ✅ Firefox
+- ✅ Safari
+- ✅ Any browser supporting ES2020+ (BigInt, CSS backdrop-filter, Canvas API)
+
+---
+
+## 🎨 Design
+
+- **Deep space glassmorphism** theme with animated gradient orbs
+- **Color-coded buttons**: numbers, operators, scientific, utility — each with distinct palette
+- **Ripple effects** and micro-animations on every interaction
+- **Responsive**: works from 320px mobile to desktop
+- **Fonts**: Inter (UI) + JetBrains Mono (numbers/code)
 
 ---
 
 ## 📝 License
 
-This project is open source and available for personal and educational use.
+MIT License — free for personal, educational, and commercial use.
 
 ---
 
 ## 🤝 Contributing
 
-Feel free to fork, modify, and improve this calculator. Contributions are welcome!
+Contributions welcome! Fork, improve, and submit a pull request.
 
 ---
 
-**Last Updated:** 2026
-**Version:** 2.0 (Quantum Edition)
-**Features:** 7 Calculator Modes + 13 Unit Converters = 20 Tools in One
+**Version**: 2.0 — Quantum Edition  
+**Last Updated**: July 2026  
+**Total Modes**: 5 Calculators + 13 Converters = **18 tools in one**
